@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rangga Ermansyah - Fullstack Web Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-[#0a0a1a] text-white">
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    .profile-links a {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+.profile-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px rgba(0,243,255,0.28);
+  color: #000 !important;
+}
+
+/* jika mau hover warna sesuai tiap tombol, gunakan :hover style spesifik atau inline style */
+
+
+    :root {
+      --neon-blue: #00f3ff;
+      --neon-purple: #d16ba5;
+      --neon-cyan: #00ffea;
+      --neon-pink: #ff2d95;
+      --dark-bg: #0a0a1a;
+      --card-bg: rgba(16, 18, 35, 0.95);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+      color: #ffffff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+    }
+
+    /* Neon glowing text */
+    .neon-text {
+      color: var(--neon-cyan);
+      text-shadow:
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-blue),
+        0 0 40px var(--neon-blue);
+      transition: text-shadow 0.3s ease-in-out;
+    }
+
+    .neon-text:hover {
+      text-shadow:
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 40px var(--neon-blue),
+        0 0 80px var(--neon-blue);
+    }
+
+    /* Glowing buttons */
+    .btn-glow {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow:
+        0 0 10px rgba(102, 126, 234, 0.5),
+        0 0 20px rgba(102, 126, 234, 0.3),
+        0 0 40px rgba(102, 126, 234, 0.2);
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #00f3ff, #d16ba5, #00ffea, #ff2d95);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .btn-glow:hover::before {
+      opacity: 1;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px rgba(102, 126, 234, 0.8),
+        0 0 40px rgba(102, 126, 234, 0.5),
+        0 0 60px rgba(102, 126, 234, 0.3);
+    }
+
+  .section-title {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+
+  /* Gradient text */
+  background: linear-gradient(135deg, #00f3ff 0%, #d16ba5 50%, #00ffea 100%);
+  -webkit-background-clip: text; /* Chrome, Safari */
+  background-clip: text;         /* standar (jika didukung) */
+
+  /* Make the text transparent so the gradient shows through */
+  color: transparent;               /* fallback */
+  -webkit-text-fill-color: transparent; /* for WebKit/Blink */
+
+  /* Optional: smoothing for crisper text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Subtle glow + drop shadow (lebih rapi daripada blur 30px) */
+  text-shadow:
+    0 0 12px rgba(0, 243, 255, 0.25),
+    0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #00f3ff, #d16ba5);
+      border-radius: 2px;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+    }
+
+    /* Enhanced fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Advanced skill badges with logos */
+    .skill-item {
+      background: var(--card-bg);
+      border: 2px solid rgba(0, 243, 255, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .skill-item:hover::before {
+      transform: translateX(100%);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      border-color: var(--neon-cyan);
+      box-shadow:
+        0 0 20px rgba(0, 243, 255, 0.3),
+        0 0 40px rgba(0, 243, 255, 0.2);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Enhanced achievement cards */
+    .achievement-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      transition: transform 0.6s ease;
+    }
+
+    .achievement-card:hover::before {
+      transform: rotate(45deg) translate(50%, 50%);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 243, 255, 0.2);
+    }
+
+    /* Typing animation */
+    .typing-text {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid var(--neon-cyan);
+      white-space: nowrap;
+      animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--neon-cyan) }
+    }
+
+    /* Modern nav */
+    nav {
+      background: rgba(10, 10, 26, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+      position: relative;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 80%;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+
+    /* Particle background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+
+    /* Profile image styling */
+    .profile-image {
+      border: 4px solid transparent;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)) border-box;
+      border-radius: 50%;
+      padding: 4px;
+      display: inline-block;
+      position: relative;
+      animation: profile-glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes profile-glow {
+      from {
+        box-shadow: 0 0 20px var(--neon-cyan);
+      }
+      to {
+        box-shadow: 0 0 40px var(--neon-purple), 0 0 60px var(--neon-pink);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      nav a {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .skill-item {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-400 selection:text-cyan-900">
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="py-4">
+    <div class="container mx-auto px-6 flex justify-center space-x-4 md:space-x-8">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
+      <a href="#career" class="nav-link">Career</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20">
+    <div class="profile-image mb-8 fade-in" style="animation-delay: 0.2s;">
+        <div class="profile-image mb-8 fade-in" style="animation-delay: 0.2s;">
+  <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&h=300&q=80" 
+       alt="Rangga Ermansyah - Web Developer"
+       onerror="this.src='https://placehold.co/300x300/0a0a1a/ffffff?text=R+'" />
+</div>
+
+      <img
+        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&h=300&q=80"
+        alt="Rangga Ermansyah - Web Developer"
+        class="w-48 h-48 rounded-full object-cover"
+        onerror="this.src='https://placehold.co/300x300/0a0a1a/ffffff?text=R+'"
+      />
+    </div>
+    
+    <h1 class="neon-text text-5xl md:text-7xl font-bold mb-6 fade-in" style="animation-delay: 0.4s;">
+      Rangga Ermansyah
+    </h1>
+    <div class="profile-links mt-6 flex items-center justify-center gap-4 fade-in" style="animation-delay: 0.6s;">
+  <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-2 px-4 py-2 rounded-full transition" 
+     style="border:2px solid var(--neon-blue); color:var(--neon-blue); text-shadow:0 0 10px rgba(0,243,255,0.35);">
+    <i class="fab fa-github"></i>
+    <span class="hidden sm:inline">GitHub</span>
+  </a>
+
+  <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-2 px-4 py-2 rounded-full transition"
+     style="border:2px solid var(--neon-purple); color:var(--neon-purple); text-shadow:0 0 10px rgba(209,107,165,0.25);">
+    <i class="fab fa-linkedin"></i>
+    <span class="hidden sm:inline">LinkedIn</span>
+  </a>
+
+  <a href="cv-rangga.pdf" target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-2 px-4 py-2 rounded-full transition"
+     style="border:2px solid var(--neon-cyan); color:var(--neon-cyan); text-shadow:0 0 10px rgba(0,255,234,0.25);">
+    <i class="fa fa-file"></i>
+    <span class="hidden sm:inline">Download CV</span>
+  </a>
+
+  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+     class="flex items-center gap-2 px-4 py-2 rounded-full transition"
+     style="border:2px solid var(--neon-pink); color:var(--neon-pink); text-shadow:0 0 10px rgba(255,45,149,0.25);">
+    <i class="fab fa-whatsapp"></i>
+    <span class="hidden sm:inline">WhatsApp</span>
+  </a>
+</div>
+    
+    <div class="mb-8 fade-in" style="animation-delay: 0.6s;">
+      <h2 class="typing-text text-2xl md:text-3xl text-cyan-300 font-semibold">
+        Aspiring Fullstack Web Developer
+      </h2>
+    </div>
+    
+    <p class="max-w-2xl text-cyan-200 text-lg md:text-xl fade-in" style="animation-delay: 0.8s;">
+      Currently mastering web development at SMKS PGRI Pekanbaru, specializing in Software Development. 
+      Passionate about creating innovative digital experiences and aiming to excel as a Fullstack Developer.
+    </p>
+    
+    <div class="mt-12 flex flex-wrap justify-center gap-6 fade-in" style="animation-delay: 1s;">
+      <a href="#projects" class="btn-glow px-8 py-4 rounded-xl font-semibold text-white text-lg">
+        View Projects
+      </a>
+      <a href="#contact" class="glass px-8 py-4 rounded-xl font-semibold text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/60 transition-colors">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="fade-in" style="animation-delay: 0.3s;">
+          <img
+            src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&h=400&q=80"
+            alt="Rangga working on web development"
+            class="rounded-2xl shadow-2xl w-full"
+            onerror="this.src='https://placehold.co/600x400/0a0a1a/ffffff?text=Web+Dev'"
+          />
+        </div>
+        <div class="fade-in" style="animation-delay: 0.5s;">
+          <p class="text-cyan-200 text-lg mb-6">
+          Hello! I'm Rangga Ermansyah, a student at SMKS PGRI Pekanbaru, climbing high in the field of Software Development. I'm passionate about creating amazing digital experiences through modern web technologies. And I have one mission and one dream: to participate in the 2026 SNBP selection and enter my dream state university, with a Bachelor's degree in Informatics Engineering. I continue to develop my talents and skills as a web developer/designer.
+          </p>
+          <p class="text-cyan-200 text-lg mb-8">
+            My journey in web development started with curiosity and has evolved into a strong passion. 
+            I'm constantly learning and experimenting with new technologies to stay at the forefront of web development.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-cyan-400 text-2xl mb-2">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h4 class="font-semibold">Education</h4>
+              <p class="text-sm text-cyan-300">SMKS PGRI Pekanbaru</p>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-purple-400 text-2xl mb-2">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h4 class="font-semibold">Specialization</h4>
+              <p class="text-sm text-cyan-300">Software Development</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 px-6 bg-gradient-to-br from-[#0a0a1a] to-[#1a1a2e]">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">Education Journey</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="achievement-card fade-in" style="animation-delay: 0.3s;">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-school text-2xl text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-cyan-400">MIN 2 BOGOR</h3>
+              <p class="text-cyan-300">Scouting Organization Students</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">
+            At that time, in the middle of 2017 - early 2020, I actively participated in scout organizations, as well as competitions/events at Min 2 Bogor to start the initial stage of developing my talents and Pancasila spirit and based on the Dasa Darma Scouts.
+          </p>
+        </div>
+          <div class="achievement-card fade-in" style="animation-delay: 0.3s;">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-school text-2xl text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-cyan-400">SMPN 2 PARUNG - BOGOR</h3>
+              <p class="text-cyan-300"> A Paskibra student and a School Organization Student</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">
+            Currently pursuing comprehensive education in At the beginning of 2021, during the COVID-19 pandemic, I had been participating in the flag-raising extracurricular activities at my junior high school for about a year and a half. In mid-2022, I joined the Student Council (OSIS) and served as the head of the religious and spiritual affairs division.
+          </p>
+        </div>
+        <div class="achievement-card fade-in" style="animation-delay: 0.3s;">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-school text-2xl text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-cyan-400">SMKS PGRI Pekanbaru</h3>
+              <p class="text-cyan-300">Software Development Major</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">
+           During my SMKS (vocational high school) days, I participated in several extracurricular activities, such as flag-raising, scouting, multimedia, and two organizations at once: ROHIS and OSIS. I served two terms, then became the Vice Chair of OSIS and the Chair of Rohis until 2025.
+          </p>
+        </div>
+        <div class="achievement-card fade-in" style="animation-delay: 0.5s;">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 bg-purple-900 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-university text-2xl text-purple-400"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-purple-400">Universitas Negeri Padang</h3>
+              <p class="text-cyan-300">Future Goal - Informatics Engineering</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">
+            Aiming to pursue Bachelor's degree in Informatics Engineering to deepen knowledge and 
+            contribute to innovative technological advancements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-6">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">Technical Expertise</h2>
+      <p class="text-cyan-300 text-center max-w-2xl mx-auto mb-12 fade-in" style="animation-delay: 0.3s;">
+        Proficient in modern web technologies and design tools that power today's digital experiences
+      </p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <!-- HTML -->
+        <div class="skill-item fade-in" style="animation-delay: 0.4s;">
+          <span class="skill-icon text-orange-500">
+            <i class="fab fa-html5"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">HTML5</h3>
+          <p class="text-sm text-cyan-300">Markup Language</p>
+        </div>
+
+        <!-- CSS -->
+        <div class="skill-item fade-in" style="animation-delay: 0.5s;">
+          <span class="skill-icon text-blue-500">
+            <i class="fab fa-css3-alt"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">CSS3</h3>
+          <p class="text-sm text-cyan-300">Styling</p>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="skill-item fade-in" style="animation-delay: 0.6s;">
+          <span class="skill-icon text-yellow-500">
+            <i class="fab fa-js-square"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">JavaScript</h3>
+          <p class="text-sm text-cyan-300">Programming</p>
+        </div>
+
+        <!-- PHP -->
+        <div class="skill-item fade-in" style="animation-delay: 0.7s;">
+          <span class="skill-icon text-purple-500">
+            <i class="fab fa-php"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">PHP</h3>
+          <p class="text-sm text-cyan-300">Backend</p>
+        </div>
+
+        <!-- Figma -->
+        <div class="skill-item fade-in" style="animation-delay: 0.8s;">
+          <span class="skill-icon text-pink-500">
+            <i class="fab fa-figma"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">Figma</h3>
+          <p class="text-sm text-cyan-300">Design</p>
+        </div>
+
+        <!-- Blogger -->
+        <div class="skill-item fade-in" style="animation-delay: 0.9s;">
+          <span class="skill-icon text-orange-600">
+            <i class="fab fa-blogger"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">Blogger</h3>
+          <p class="text-sm text-cyan-300">Platform</p>
+        </div>
+
+        <!-- WordPress -->
+        <div class="skill-item fade-in" style="animation-delay: 1.0s;">
+          <span class="skill-icon text-blue-600">
+            <i class="fab fa-wordpress"></i>
+          </span>
+          <h3 class="font-semibold text-lg mb-2">WordPress</h3>
+          <p class="text-sm text-cyan-300">CMS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="py-20 px-6 bg-gradient-to-bl from-[#0a0a1a] to-[#1a1a2e]">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">Achievements</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="achievement-card fade-in" style="animation-delay: 0.3s;">
+          <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-trophy text-white"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-cyan-400">Academic Excellence</h3>
+          <p class="text-cyan-200">Consistently maintained outstanding academic performance in Software Development curriculum.</p>
+        </div>
+        <div class="achievement-card fade-in" style="animation-delay: 0.5s;">
+          <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-code text-white"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-purple-400">Project Development</h3>
+          <p class="text-cyan-200">Successfully completed multiple web development projects showcasing fullstack capabilities.</p>
+        </div>
+        <div class="achievement-card fade-in" style="animation-delay: 0.7s;">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-users text-white"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-green-400">Workshop Participation</h3>
+          <p class="text-cyan-200">Actively participated in web development workshops and coding competitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Section -->
+  <section id="career" class="py-20 px-6">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">Career Aspirations</h2>
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-cyan-300 text-lg mb-8 fade-in" style="animation-delay: 0.3s;">
+          My goal is to become a proficient Fullstack Developer, creating innovative web solutions that 
+          make a positive impact. I aim to work with cutting-edge technologies and contribute to 
+          meaningful projects that push the boundaries of digital innovation.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+          <div class="glass p-8 rounded-2xl fade-in" style="animation-delay: 0.5s;">
+            <i class="fas fa-rocket text-4xl text-cyan-400 mb-4"></i>
+            <h3 class="text-xl font-semibold mb-4 text-cyan-400">Short-term Goals</h3>
+            <ul class="text-cyan-200 text-left space-y-2">
+              <li>• Master React.js and Node.js</li>
+              <li>• Build portfolio of real-world projects</li>
+              <li>• Contribute to open-source projects</li>
+            </ul>
+          </div>
+          <div class="glass p-8 rounded-2xl fade-in" style="animation-delay: 0.7s;">
+            <i class="fas fa-graduation-cap text-4xl text-purple-400 mb-4"></i>
+            <h3 class="text-xl font-semibold mb-4 text-purple-400">Long-term Vision</h3>
+            <ul class="text-cyan-200 text-left space-y-2">
+              <li>• Graduate from UNP Informatics Engineering</li>
+              <li>• Work at innovative tech company</li>
+              <li>• Mentor aspiring developers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-gradient-to-tr from-[#0a0a1a] to-[#1a1a2e]">
+    <div class="container mx-auto">
+      <h2 class="section-title fade-in" style="animation-delay: 0.1s;">Let's Connect</h2>
+      <p class="text-cyan-300 text-center max-w-2xl mx-auto mb-12 fade-in" style="animation-delay: 0.3s;">
+        Ready to bring your ideas to life? Let's discuss how we can create something amazing together.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="fade-in" style="animation-delay: 0.5s;">
+          <div class="glass p-8 rounded-2xl">
+            <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Get In Touch</h3>
+            <div class="space-y-6">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+                  <i class="fas fa-envelope text-cyan-400"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-cyan-300">Email</p>
+                  <p class="text-cyan-200">rangzzknvarr@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+                  <i class="fab fa-whatsapp text-green-400"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-cyan-300">WhatsApp</p>
+                  <p class="text-cyan-200">+62 831-5142-3995</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+                  <i class="fab fa-github text-white"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-cyan-300">GitHub</p>
+                  <p class="text-cyan-200">https://github.com/ranggahay13<github class="com">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fade-in" style="animation-delay: 0.7s;">
+          <form class="glass p-8 rounded-2xl space-y-6" id="contactForm">
+            <div>
+              <label for="name" class="block mb-3 font-semibold text-cyan-300">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required 
+                     class="glass border border-cyan-400/30 rounded-xl px-4 py-3 w-full text-cyan-200 placeholder-cyan-400/60 focus:border-cyan-400/60 transition-colors" />
+            </div>
+            <div>
+              <label for="email" class="block mb-3 font-semibold text-cyan-300">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required 
+                     class="glass border border-cyan-400/30 rounded-xl px-4 py-3 w-full text-cyan-200 placeholder-cyan-400/60 focus:border-cyan-400/60 transition-colors" />
+            </div>
+            <div>
+              <label for="message" class="block mb-3 font-semibold text-cyan-300">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required 
+                        class="glass border border-cyan-400/30 rounded-xl px-4 py-3 w-full text-cyan-200 placeholder-cyan-400/60 focus:border-cyan-400/60 transition-colors"></textarea>
+            </div>
+            <button type="submit" class="btn-glow w-full py-4 rounded-xl font-semibold text-white text-lg">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 bg-[#0a0a1a] border-t border-cyan-400/20">
+    <div class="container mx-auto text-center">
+      <h3 class="text-2xl font-bold mb-4 neon-text">Rangga<span class="text-purple-400">Dev</span></h3>
+      <p class="text-cyan-400 mb-6">Future Fullstack Developer & Informatics Engineering Student</p>
+      
+      <div class="flex justify-center space-x-6 mb-6">
+        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-colors">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-colors">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-colors">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-colors">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <p class="text-cyan-500 text-sm">© 2024 Rangga Ermansyah. All rights reserved. | Built with passion and modern web technologies</p>
+    </div>
+  </footer>
+
+  <script>
+    // Create particle background
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 5;
+        
+        particle.style.width = ${size}px;
+        particle.style.height = ${size}px;
+        particle.style.left = ${posX}%;
+        particle.style.top = ${posY}%;
+        particle.style.animationDelay = ${delay}s;
+        particle.style.animationDuration = ${duration}s;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Smooth scroll and active nav link highlight
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+
+    function onScroll() {
+      const scrollPos = window.scrollY + window.innerHeight / 3;
+      sections.forEach((section, i) => {
+        if (section && section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          navLinks[i].classList.add('active');
+        }
+      });
+    }
+
+    // Contact form
